@@ -1,4 +1,6 @@
-# HASH256 CLI Miner
+# HASH256 CLI Miner with CPU
+
+# Kalo mau pake GPU bisa ke sini https://github.com/mrfunntastiic/hash256-cli-with-gpu
 
 CLI miner untuk HASH256 dari `https://hash256.org/mine`.
 
