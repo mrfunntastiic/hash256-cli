@@ -1,23 +1,28 @@
 {
   "name": "hash256-cli",
-  "version": "1.0.0",
-  "description": "CLI miner for HASH256 on Ethereum mainnet.",
+  "version": "1.1.0",
+  "description": "CLI miner for HASH256 on Ethereum mainnet. Multi-threaded CPU + optional GPU backend.",
   "main": "miner.js",
   "scripts": {
     "start": "node miner.js",
+    "start:max": "node --max-old-space-size=8192 miner.js",
+    "bench": "node bench.js 5",
     "check": "node check-state.js"
   },
   "keywords": [
     "hash256",
     "ethereum",
     "miner",
-    "cli"
+    "cli",
+    "multithread",
+    "gpu"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.7",
-    "ethers": "^6.13.5"
+    "ethers": "^6.13.5",
+    "js-sha3": "^0.9.3"
   },
   "engines": {
     "node": ">=18"
