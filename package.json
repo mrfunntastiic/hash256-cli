@@ -1,21 +1,26 @@
 {
   "name": "hash256-cli",
-  "version": "1.0.0",
-  "description": "CLI miner for HASH256 on Ethereum mainnet.",
-  "main": "miner.js",
+  "version": "2.0.0",
+  "description": "Optimized CLI miner for HASH256 on Ethereum mainnet.",
+  "type": "module",
+  "main": "miner-optimized.mjs",
   "scripts": {
-    "start": "node miner.js",
-    "check": "node check-state.js"
+    "start": "node miner-optimized.mjs",
+    "start:legacy": "node miner.js",
+    "check": "node check-state.js",
+    "bench": "node bench.mjs"
   },
   "keywords": [
     "hash256",
     "ethereum",
     "miner",
-    "cli"
+    "cli",
+    "gpu"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@noble/hashes": "^2.2.0",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.5"
   },

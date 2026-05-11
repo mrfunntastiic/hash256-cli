@@ -1,13 +1,12 @@
-require("dotenv").config();
-
-const { ethers } = require("ethers");
+import "dotenv/config";
+import { ethers } from "ethers";
 
 const RPC_URL = process.env.RPC_URL;
 const CONTRACT_ADDRESS = "0xAC7b5d06fa1e77D08aea40d46cB7C5923A87A0cc";
 
 const ABI = [
   "function miningState() view returns (uint256 era,uint256 reward,uint256 difficulty,uint256 minted,uint256 remaining,uint256 epoch,uint256 epochBlocksLeft_)",
-  "function genesisState() view returns (uint256,uint256,uint256,bool)"
+  "function genesisState() view returns (uint256,uint256,uint256,bool)",
 ];
 
 if (!RPC_URL) {
@@ -23,8 +22,18 @@ async function main() {
   const miningState = await contract.miningState();
 
   console.log("Contract:", CONTRACT_ADDRESS);
+  console.log("");
+  console.log("── Genesis ──");
   console.log("genesisState:", genesisState);
-  console.log("miningState:", miningState);
+  console.log("");
+  console.log("── Mining State ──");
+  console.log("Era:", miningState.era.toString());
+  console.log("Reward:", ethers.formatUnits(miningState.reward, 18), "HASH");
+  console.log("Difficulty:", miningState.difficulty.toString());
+  console.log("Minted:", miningState.minted.toString());
+  console.log("Remaining:", miningState.remaining.toString());
+  console.log("Epoch:", miningState.epoch.toString());
+  console.log("Epoch Blocks Left:", miningState.epochBlocksLeft_.toString());
 }
 
 main().catch((err) => {
